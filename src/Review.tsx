@@ -4,17 +4,8 @@ import people from './data';
 const Review:React.FC = () => {
     let [index,setIndex] = useState<number>(0)
     const {name,job,image,text} = people[index]
-    const checkNumber = (number:number) => {
-        if (number > people.length - 1) {
-          return 0;
-        }
-        if (number < 0) {
-          return people.length - 1;
-        }
-        return number;
-      };
-      const nextPerson = () => {
   
+      const nextPerson = () => {  
         setIndex( index === people.length-1 ? 0 : index + 1)
       };
       const prevPerson = () => {
@@ -25,7 +16,7 @@ const Review:React.FC = () => {
         if (randomNumber === index) {
           randomNumber = index + 1;
         }
-        setIndex(checkNumber(randomNumber));
+        setIndex( randomNumber > people.length-1 ? 0 : randomNumber )
       };
     
       return (
